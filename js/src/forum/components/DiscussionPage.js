@@ -110,9 +110,7 @@ export default class DiscussionPage extends Page {
         if (idParam && idParam.split('-')[0] === this.discussion.id()) {
           const near = m.route.param('near') || '1';
 
-          // We account for a small margin of error in case we have a lot of posts
-          // closely packed together.
-          if (Math.abs(parseInt(near) - this.near) > 2) {
+          if (near !== String(this.near)) {
             this.stream.goToNumber(near);
           }
 
